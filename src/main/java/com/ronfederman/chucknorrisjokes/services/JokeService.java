@@ -7,23 +7,18 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class JokeService{
+public class JokeService {
 
-        private ChuckNorrisQuotes quote;
-        private String joke;
+    private final ChuckNorrisQuotes quote;
+    private String joke;
 
-        public JokeService() {
-            this.quote = new ChuckNorrisQuotes();
-        }
+    public JokeService(ChuckNorrisQuotes quote) {
+        this.quote = quote;
+    }
 
-//    @Override
-//    public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
-//        joke = quote.getRandomQuote();
-//
-//    }
+    public String getJoke() {
+        joke = quote.getRandomQuote();
+        return joke;
 
-        public String getJoke() {
-            joke = quote.getRandomQuote();
-            return joke;
-        }
+    }
 }
